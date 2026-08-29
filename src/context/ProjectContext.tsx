@@ -234,7 +234,13 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const saved = localStorage.getItem(STORAGE_KEY_WORKSPACES);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const hasFlagship = parsed.some((w: ProjectWorkspace) => w.id === 'ws-signals-flagship');
+          if (!hasFlagship) {
+            return [...initialWorkspaces, ...parsed.filter((w: ProjectWorkspace) => w.id !== 'ws-default')];
+          }
+          return parsed;
+        }
       }
     } catch (e) {
       console.warn('Failed to parse cached workspaces', e);
@@ -295,8 +301,20 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
         if (parsed.secondBrainNotes) setSecondBrainNotes(parsed.secondBrainNotes);
         if (parsed.bugs) setBugs(parsed.bugs);
         if (parsed.qaTestCases) setQATestCases(parsed.qaTestCases);
+      } else if (workspaceId === 'ws-signals-flagship') {
+        // Load initial rich demo data
+        setPRDs(initialPRDs);
+        setDevTasks(initialDevTasks);
+        setContextBlocks(initialContextBlocks);
+        setDecisions(initialDecisions);
+        setSecurityFindings(initialSecurityFindings);
+        setSecurityEvidence(initialSecurityEvidence);
+        setFeedback(initialFeedback);
+        setSecondBrainNotes(initialSecondBrainNotes);
+        setBugs(initialBugItems);
+        setQATestCases(initialQATestCases);
       } else {
-        // Start clean for this workspace
+        // Start clean for this new workspace
         setPRDs([]);
         setDevTasks([]);
         setContextBlocks([]);

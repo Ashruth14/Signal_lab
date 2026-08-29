@@ -36,81 +36,903 @@ import {
 } from '../types';
 
 export const initialMetrics: ProjectMetrics = {
-  compositeHealth: 100,
-  userSentimentScore: 100,
-  checkoutReliability: 100,
-  featureVelocity: 0,
-  uxHealthScore: 100,
-  qaPassRate: 100,
-  productionHealth: 100,
+  compositeHealth: 94,
+  userSentimentScore: 92,
+  checkoutReliability: 99.98,
+  featureVelocity: 18,
+  uxHealthScore: 91,
+  qaPassRate: 96,
+  productionHealth: 98,
   activeP0Issues: 0,
-  openPRDCount: 0,
-  unresolvedVisualMismatches: 0,
-  unrefinedNotesCount: 0,
-  securityHealthScore: 100,
-  openVulnerabilitiesCount: 0,
+  openPRDCount: 4,
+  unresolvedVisualMismatches: 1,
+  unrefinedNotesCount: 2,
+  securityHealthScore: 95,
+  openVulnerabilitiesCount: 1,
   criticalVulnerabilitiesCount: 0,
 };
 
-export const initialFeedback: FeedbackItem[] = [];
-export const initialProblemClusters: ProblemCluster[] = [];
-export const initialFeatureRequests: FeatureRequest[] = [];
-export const initialInsights: StrategicInsight[] = [];
-
-export const initialPRDs: ProductRequirement[] = [];
-export const initialFeatures: ProductFeature[] = [];
-export const initialRoadmap: RoadmapEpic[] = [];
-
-export const initialResearchSessions: ResearchSession[] = [];
-export const initialUXFindings: UXFinding[] = [];
-export const initialPersonas: UserPersona[] = [];
-
-export const initialValidationSessions: DesignValidationSession[] = [];
-export const initialDesignTokens: DesignToken[] = [];
-export const initialFigmaSpecs: FigmaFrameSpec[] = [];
-export const initialDesignReviews: DesignReviewThread[] = [];
-
-export const initialDevTasks: DevTask[] = [];
-export const initialSprintFeatures: SprintFeature[] = [];
-export const initialSandboxBuilds: SandboxBuild[] = [];
-
-export const initialQATestCases: QATestCase[] = [];
-export const initialBugItems: BugItem[] = [];
-export const initialReadinessChecks: ReleaseReadinessCheck[] = [];
-
-export const initialReleases: ReleaseItem[] = [];
-export const initialIncidents: IncidentItem[] = [];
-export const initialMaintenance: MaintenanceTask[] = [];
-
-export const initialContextBlocks: ContextBlock[] = [];
-export const initialSecondBrainNotes: SecondBrainNote[] = [];
-export const initialFileVault: FileVaultItem[] = [];
-export const initialDecisions: ProjectDecision[] = [];
-
-export const initialSecurityAssessments: SecurityAssessment[] = [];
-export const initialSecurityFindings: SecurityFinding[] = [];
-export const initialSecurityEvidence: SecurityEvidence[] = [];
-export const initialSecurityScanEvents: SecurityScanEvent[] = [];
-
 export const initialWorkspaces: ProjectWorkspace[] = [
   {
-    id: 'ws-default',
-    name: 'Primary Workspace',
-    code: 'MAIN',
-    tagline: 'Connect a GitHub repository to ingest project memory',
-    description: 'Workspace ready. Import a GitHub repository to automatically parse codebase intelligence, synthesize PRDs, Kanban tasks, and security audits.',
-    version: 'v1.0.0',
-    platform: 'Cross-Platform',
-    healthScore: 100,
-    activeSprint: 'Sprint 1: Repository Ingestion & Baseline Architecture',
-    createdAt: new Date().toISOString().split('T')[0],
-    owner: 'Project Maintainer',
-    techStack: ['TypeScript', 'React', 'Node.js'],
-    themeColor: '#0070f3',
+    id: 'ws-signals-flagship',
+    name: 'Signals Lab Core Platform',
+    code: 'SIGN',
+    tagline: 'Autonomous lifecycle intelligence and design-to-code verification',
+    description: 'Flagship project space verifying full lifecycle engineering workflows from requirements synthesis to OWASP security gates and multi-role views.',
+    version: 'v1.4.0',
+    platform: 'Web',
+    healthScore: 94,
+    activeSprint: 'Sprint 14: Automated AST Security & Figma Spec Pinning',
+    createdAt: '2026-08-01',
+    owner: 'Ashruth (Project Lead)',
+    techStack: ['TypeScript', 'React 18', 'Tailwind CSS', 'Vite', 'Firebase Firestore', 'Lucide'],
+    themeColor: '#6366f1',
+  },
+  {
+    id: 'ws-strix-sec',
+    name: 'Strix Autonomous Penetration Testing',
+    code: 'STRX',
+    tagline: 'Multi-agent LLM vulnerability scanning and zero-day detection',
+    description: 'Autonomous penetration testing workspace that models multi-agent AST analyzers and automated exploit verification proof pipelines.',
+    version: 'v2.1.0',
+    platform: 'Backend / Cloud',
+    healthScore: 91,
+    activeSprint: 'Sprint 8: Tree-Sitter AST & OWASP Benchmark Suite',
+    createdAt: '2026-08-10',
+    owner: 'Security Engineering Team',
+    techStack: ['Python', 'FastAPI', 'Docker', 'Tree-Sitter AST', 'PostgreSQL', 'Redis'],
+    themeColor: '#ec4899',
   },
 ];
 
-// LLM models & pricing metadata
+export const initialFeedback: FeedbackItem[] = [
+  {
+    id: 'fb-01',
+    source: 'GitHub Issues',
+    userHandle: '@elena_dev',
+    rating: 5,
+    comment: 'The side-by-side design validation studio cut our UI review cycles from 3 days to under 30 minutes. Coordinate pinning is a game changer.',
+    sentiment: 'positive',
+    platform: 'Web',
+    appVersion: 'v1.4.0',
+    upvotes: 42,
+    date: '2026-08-24',
+  },
+  {
+    id: 'fb-02',
+    source: 'Discord',
+    userHandle: '@marcus_pm',
+    rating: 5,
+    comment: 'Having Kanban tasks directly bound to PRD requirements ensures developers always have full business context for every pull request.',
+    sentiment: 'positive',
+    platform: 'Web',
+    appVersion: 'v1.4.0',
+    upvotes: 38,
+    date: '2026-08-22',
+  },
+  {
+    id: 'fb-03',
+    source: 'Support Desk',
+    userHandle: '@sarah_secops',
+    rating: 5,
+    comment: 'Automated release blockers based on OWASP Top 10 findings stopped a critical SSRF bypass before reaching staging.',
+    sentiment: 'positive',
+    platform: 'Backend / Cloud',
+    appVersion: 'v1.4.0',
+    upvotes: 29,
+    date: '2026-08-20',
+  },
+];
+
+export const initialProblemClusters: ProblemCluster[] = [
+  {
+    id: 'cluster-01',
+    title: 'Design Drift between Figma specs and React production builds',
+    aiSummary: 'Designers spend over 8 hours weekly writing manual ticket comments pointing out margin, color token, and typography mismatches in web builds.',
+    userCount: 140,
+    sentiment: 'negative',
+    severity: 'high',
+    trend: '+12% this week',
+    trendType: 'up',
+    platform: 'Web',
+    productArea: 'Design Systems',
+    firstDetected: '2026-08-01',
+    latestOccurrence: 'Today',
+    owner: 'Maya Lin',
+    status: 'in-dev',
+    aiInsight: {
+      likelyCause: 'Engineers lack an in-situ visual diff tool against live Figma tokens.',
+      recommendedAction: 'Deploy Validation Studio with coordinate-pinned annotations.',
+      velocityNote: 'Addresses 45% of visual regression bug tickets.',
+    },
+  },
+  {
+    id: 'cluster-02',
+    title: 'Context Fragmentation across Jira, GitHub, and Slack',
+    aiSummary: 'Engineers switch between 4 different tabs to understand why an architectural decision was made months ago.',
+    userCount: 210,
+    sentiment: 'negative',
+    severity: 'critical',
+    trend: '+8% this month',
+    trendType: 'up',
+    platform: 'Cross-Platform',
+    productArea: 'Project Memory',
+    firstDetected: '2026-08-05',
+    latestOccurrence: 'Yesterday',
+    owner: 'Alex Thorne',
+    status: 'in-dev',
+    aiInsight: {
+      likelyCause: 'ADRs and architectural notes are not centralized near code tasks.',
+      recommendedAction: 'Centralize Architecture Decision Records into Memory OS.',
+      velocityNote: 'Reduces developer onboarding time by 60%.',
+    },
+  },
+];
+
+export const initialFeatureRequests: FeatureRequest[] = [
+  {
+    id: 'fr-01',
+    title: 'Direct Figma REST API Token Synchronizer',
+    description: 'Auto-pull Figma variables and design tokens directly into Tailwind CSS theme configurations.',
+    requesterCount: 84,
+    category: 'Design Systems',
+    targetQuarter: 'Q4 2026',
+    status: 'Planned',
+    originSource: 'Figma Community',
+  },
+  {
+    id: 'fr-02',
+    title: 'Bi-directional GitHub Issues Two-Way Webhook Sync',
+    description: 'Mirror task state changes from Signals Lab Kanban directly to GitHub repository issues.',
+    requesterCount: 112,
+    category: 'Integrations',
+    targetQuarter: 'Q3 2026',
+    status: 'In Progress',
+    originSource: 'GitHub Community',
+  },
+];
+
+export const initialInsights: StrategicInsight[] = [
+  {
+    id: 'insight-01',
+    category: 'Technical Debt',
+    headline: 'Local-First Architecture Boosts Daily Active Developer Engagement by 4x',
+    description: 'Sub-10ms response times on Kanban operations prevent mental context-switching during sprint standups.',
+    impactScore: 92,
+    confidence: 96,
+    date: '2026-08-15',
+    recommendedInitiative: 'Maintain local-first state caching as primary persistence engine.',
+  },
+  {
+    id: 'insight-02',
+    category: 'UX Opportunity',
+    headline: 'Automated Security Release Gates Reduce Remediation Costs by 80%',
+    description: 'Catching AST vulnerabilities prior to staging deployment saves an estimated 14 engineering hours per release candidate.',
+    impactScore: 88,
+    confidence: 94,
+    date: '2026-08-18',
+    recommendedInitiative: 'Expand Strix AST scanner rule set for OWASP Top 10.',
+  },
+];
+
+export const initialPRDs: ProductRequirement[] = [
+  {
+    id: 'prd-sign-01',
+    reqCode: 'PRD-SIGN-101',
+    title: 'Real-Time Design Validation Studio & Coordinate Pinning',
+    problemStatement: 'Designers and developers lack a unified live environment to verify Figma frame specifications against interactive React components with pixel-level annotation.',
+    businessImpact: 'Reduces visual regressions by 85% and eliminates design revision rounds prior to QA signoff.',
+    userStories: [
+      'As a Product Designer, I need a side-by-side spec comparison so I can visually inspect padding and typography.',
+      'As a Frontend Engineer, I want coordinate-pinned notes attached to my Kanban ticket with exact pixel offsets.',
+    ],
+    acceptanceCriteria: [
+      '1. Side-by-side viewport render supporting Desktop (1440px), Tablet (768px), and Mobile (375px).',
+      '2. Interactive FSM simulation for Idle, Loading, Success, and Error states.',
+      '3. Coordinate-pinned annotations with categorized tag metadata and resolved toggle state.',
+    ],
+    priority: 'P0',
+    targetRelease: 'v1.4.0',
+    stage: 'In Development',
+    leadPM: 'Ashruth (Product Lead)',
+    leadDesigner: 'Maya Lin (Staff UI/UX)',
+    leadDev: 'Alex Thorne (Principal Architect)',
+    lastUpdated: 'Today',
+  },
+  {
+    id: 'prd-sign-02',
+    reqCode: 'PRD-SIGN-102',
+    title: 'Automated OWASP Security Release Gate & AST Scanner Adapter',
+    problemStatement: 'Production builds risk shipping unmitigated high/critical OWASP vulnerabilities due to manual and infrequent security auditing.',
+    businessImpact: 'Prevents security breaches and automates compliance sign-offs for SOC2 and ISO27001.',
+    userStories: [
+      'As a Security Engineer, I want automated AST inspections to block releases if unmitigated critical findings exist.',
+      'As a DevOps Lead, I need real-time composite security score metrics before triggering production deployment.',
+    ],
+    acceptanceCriteria: [
+      '1. Zero unmitigated Critical OWASP vulnerabilities required for gate PASS.',
+      '2. Composite security health score must exceed 90/100.',
+      '3. Pluggable scanner support for Strix AST and VulnClaw dynamic probes.',
+    ],
+    priority: 'P0',
+    targetRelease: 'v1.4.0',
+    stage: 'Ready for QA',
+    leadPM: 'Ashruth (Security Lead)',
+    leadDesigner: 'Maya Lin (UX Security)',
+    leadDev: 'David Vance (SecOps Engineer)',
+    lastUpdated: 'Yesterday',
+  },
+  {
+    id: 'prd-sign-03',
+    reqCode: 'PRD-SIGN-103',
+    title: 'Persistent Project Memory OS & Architecture Decision Log',
+    problemStatement: 'Engineering rationale and architectural trade-offs are lost over time, leading to repetitive debates and technical regressions.',
+    businessImpact: 'Improves new developer onboarding speed by 60% and preserves immutable decision trails.',
+    userStories: [
+      'As an engineer joining the team, I need to understand why Local-First state was chosen over pure cloud sync.',
+    ],
+    acceptanceCriteria: [
+      '1. Structured ADR format with Title, Context, Decision, Consequences, and Author.',
+      '2. Instant search and filter across memory notes and technical briefs.',
+    ],
+    priority: 'P1',
+    targetRelease: 'v1.4.0',
+    stage: 'Shipped',
+    leadPM: 'Ashruth',
+    leadDesigner: 'Maya Lin',
+    leadDev: 'Alex Thorne',
+    lastUpdated: '3 days ago',
+  },
+];
+
+export const initialFeatures: ProductFeature[] = [
+  {
+    id: 'feat-01',
+    featureCode: 'FEAT-SIGN-01',
+    name: 'Interactive Design Sandbox',
+    category: 'Design Systems',
+    stage: 'In Development',
+    progress: 85,
+    owner: 'Maya Lin',
+    targetVersion: 'v1.4.0',
+    description: 'Split-screen canvas with live FSM state simulation and coordinate annotations.',
+    associatedPRD: 'PRD-SIGN-101',
+  },
+  {
+    id: 'feat-02',
+    featureCode: 'FEAT-SIGN-02',
+    name: 'OWASP Security Release Gate',
+    category: 'Security',
+    stage: 'Ready for QA',
+    progress: 90,
+    owner: 'David Vance',
+    targetVersion: 'v1.4.0',
+    description: 'Automated static AST analysis and dynamic prober release blocker calculation.',
+    associatedPRD: 'PRD-SIGN-102',
+  },
+  {
+    id: 'feat-03',
+    featureCode: 'FEAT-SIGN-03',
+    name: 'GitHub REST Repo Ingestion',
+    category: 'Ingestion',
+    stage: 'Shipped',
+    progress: 100,
+    owner: 'Alex Thorne',
+    targetVersion: 'v1.3.0',
+    description: 'Instant repository parsing for tech stack detection, language byte charts, and auto-PRDs.',
+    associatedPRD: 'PRD-SIGN-103',
+  },
+];
+
+export const initialRoadmap: RoadmapEpic[] = [
+  {
+    id: 'epic-01',
+    title: 'Q3 2026: Core Intelligence & Design-to-Code Pipeline',
+    quarter: 'Q3 2026',
+    status: 'On Track',
+    priority: 'P0',
+    owner: 'Ashruth',
+    summary: 'Rollout Validation Studio, GitHub Ingestion, and Firebase Sync.',
+    deliverables: ['Validation Studio v1.4', 'GitHub Parser v1.2', 'Firestore WebSockets'],
+    completionPercent: 82,
+  },
+  {
+    id: 'epic-02',
+    title: 'Q4 2026: Multi-Agent Autonomous Security Benchmark Suite',
+    quarter: 'Q4 2026',
+    status: 'Upcoming',
+    priority: 'P1',
+    owner: 'David Vance',
+    summary: 'Strix AST Multi-Agent Scanner integration and automated pull request comments.',
+    deliverables: ['Strix AST Engine', 'VulnClaw Prober Benchmark', 'Zero-Day Gating'],
+    completionPercent: 35,
+  },
+];
+
+export const initialResearchSessions: ResearchSession[] = [
+  {
+    id: 'res-01',
+    sessionCode: 'RES-01',
+    participantHandle: '@maya_designer',
+    type: 'Moderated Usability',
+    date: '2026-08-12',
+    durationMinutes: 45,
+    personaTarget: 'Product Designer',
+    keyTakeaway: 'Engineers strongly prefer coordinate-based annotations placed directly on the live UI over generic text tickets.',
+    quotes: [
+      'Being able to click on the exact button and leave a pin saves 10 minutes of screenshotting and red-lining.',
+    ],
+    tags: ['Validation Studio', 'Annotations', 'Figma'],
+  },
+];
+
+export const initialUXFindings: UXFinding[] = [
+  {
+    id: 'uxf-01',
+    findingCode: 'UXF-01',
+    title: 'Command Palette (⌘K) reduces navigation time by 75%',
+    severity: 'High Friction',
+    affectedFlow: 'Global Navigation',
+    evidenceQuote: 'Power users rely exclusively on keyboard shortcuts to jump between PRDs, tasks, and memory records.',
+    participantCount: 16,
+    recommendedFix: 'Keep universal ⌘K shortcut registered at top-level window listener.',
+    linkedPRD: 'PRD-SIGN-101',
+  },
+];
+
+export const initialPersonas: UserPersona[] = [
+  {
+    id: 'per-01',
+    name: 'Alex Thorne',
+    tagline: 'Principal Software Architect seeking zero context loss',
+    prevalencePercentage: 45,
+    avatarIcon: 'code',
+    primaryFrustrations: ['Context loss across disparate tools', 'Unverified visual changes shipped to production'],
+    triggerScenarios: ['Evaluating architectural decisions', 'Reviewing critical security gates'],
+    designTreatments: ['Fast keyboard shortcuts', 'Deep terminal and code diff integration'],
+  },
+  {
+    id: 'per-02',
+    name: 'Maya Lin',
+    tagline: 'Staff Product Designer enforcing pixel perfection',
+    prevalencePercentage: 35,
+    avatarIcon: 'figma',
+    primaryFrustrations: ['Manually taking screenshots to point out spacing and token discrepancies'],
+    triggerScenarios: ['Conducting design sign-offs before QA release'],
+    designTreatments: ['Side-by-side Figma spec comparison', 'Live interactive FSM state previews'],
+  },
+];
+
+export const initialValidationSessions: DesignValidationSession[] = [
+  {
+    id: 'val-01',
+    featureId: 'feat-01',
+    featureTitle: 'Checkout Modal Verification',
+    screenName: 'Payment & Authentication Screen',
+    version: 'v1.4.0',
+    figmaUrl: 'https://figma.com/@signalslab/checkout-spec',
+    liveBuildComponentKey: 'checkout-v2',
+    status: 'Ready for Design Review',
+    designer: 'Maya Lin',
+    leadDev: 'Alex Thorne',
+    mismatchCount: 1,
+    annotations: [
+      {
+        id: 'ann-01',
+        xPercent: 48,
+        yPercent: 62,
+        author: 'Maya Lin',
+        authorRole: 'Designer',
+        text: 'CTA Button Padding Mismatch: Spec calls for py-3.5 px-6, current build uses py-2 px-4.',
+        type: 'spacing',
+        resolved: false,
+        timestamp: 'Today at 2:15 PM',
+      },
+    ],
+    history: [
+      {
+        date: '2026-08-29',
+        action: 'Annotation Added',
+        author: 'Maya Lin',
+        role: 'Designer',
+        comment: 'Flagged button padding discrepancy on desktop viewport.',
+      },
+    ],
+  },
+];
+
+export const initialDesignTokens: DesignToken[] = [
+  {
+    id: 'tok-01',
+    name: 'Brand Primary',
+    tokenKey: 'color.brand.primary',
+    category: 'Color',
+    value: '#6366f1',
+    cssVariable: '--color-brand-primary',
+    usageDescription: 'Main brand accent used for primary CTAs and active tab states.',
+    previewColor: '#6366f1',
+  },
+  {
+    id: 'tok-02',
+    name: 'Sans Serif Heading',
+    tokenKey: 'typography.family.sans',
+    category: 'Typography',
+    value: 'Plus Jakarta Sans',
+    cssVariable: '--font-sans',
+    usageDescription: 'Primary UI and header typography font family.',
+  },
+  {
+    id: 'tok-03',
+    name: 'Card Border Radius',
+    tokenKey: 'radius.card.lg',
+    category: 'Border Radius',
+    value: '16px',
+    cssVariable: '--radius-card-lg',
+    usageDescription: 'Standard border radius for glassmorphism modal panels and cards.',
+  },
+  {
+    id: 'tok-04',
+    name: 'Glass Panel Elevation',
+    tokenKey: 'elevation.glass.shadow',
+    category: 'Elevation',
+    value: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+    cssVariable: '--shadow-glass-panel',
+    usageDescription: 'Drop shadow for floating modals and command palette.',
+  },
+];
+
+export const initialFigmaSpecs: FigmaFrameSpec[] = [
+  {
+    id: 'fig-01',
+    frameName: 'Checkout Modal — Desktop Final',
+    componentName: 'CheckoutModal.tsx',
+    nodeId: '104:892',
+    lastSynced: 'Today at 2:30 PM',
+    specs: {
+      dimensions: '560px x 680px',
+      padding: '24px',
+      radius: '16px',
+      typographyToken: 'Plus Jakarta Sans 16px/24px',
+      colorToken: '#6366f1 (Brand Primary)',
+    },
+    devNotes: 'Requires smooth ease-in-out transition between Credit Card and Stripe tabs.',
+  },
+];
+
+export const initialDesignReviews: DesignReviewThread[] = [
+  {
+    id: 'rev-01',
+    title: 'Checkout Button Hover Contrast',
+    component: 'CheckoutModal.tsx',
+    author: 'Maya Lin',
+    status: 'Open',
+    commentsCount: 2,
+    lastActivity: '2 hours ago',
+    comments: [
+      {
+        id: 'c-01',
+        author: 'Maya Lin',
+        role: 'Staff Designer',
+        time: '2 hours ago',
+        text: 'Ensure the hover background transitions smoothly from #6366f1 to #4f46e5 with 150ms ease-in-out.',
+      },
+      {
+        id: 'c-02',
+        author: 'Alex Thorne',
+        role: 'Principal Architect',
+        time: '1 hour ago',
+        text: 'Applied in commit e46592c. Ready for re-verification in Validation Studio.',
+      },
+    ],
+  },
+];
+
+export const initialDevTasks: DevTask[] = [
+  {
+    id: 'dev-sign-01',
+    taskCode: 'DEV-SIGN-001',
+    title: '[ARCHITECTURE] Connect LocalStorage Cache to Cloud Firestore WebSockets',
+    requirementId: 'prd-sign-01',
+    requirementTitle: 'Real-Time Design Validation Studio & Coordinate Pinning',
+    status: 'done',
+    priority: 'P0',
+    assignee: {
+      name: 'Alex Thorne',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80',
+      role: 'Principal Architect',
+    },
+    contextSummary: 'Ensure state mutations write locally within 0ms and broadcast via Firestore listeners.',
+    techStackTags: ['TypeScript', 'Firebase', 'State Engine'],
+    branch: 'main/local-first-engine',
+  },
+  {
+    id: 'dev-sign-02',
+    taskCode: 'DEV-SIGN-002',
+    title: '[UI/UX] Implement Coordinate-Pinned Annotation Engine in Validation Studio',
+    requirementId: 'prd-sign-01',
+    requirementTitle: 'Real-Time Design Validation Studio & Coordinate Pinning',
+    status: 'in-progress',
+    priority: 'P0',
+    assignee: {
+      name: 'Maya Lin',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=80',
+      role: 'Staff UI Engineer',
+    },
+    contextSummary: 'Support click-to-pin coordinate recording with tag metadata and resolve status toggles.',
+    techStackTags: ['React 18', 'Canvas', 'Tailwind CSS'],
+    branch: 'feat/validation-pin-coordinates',
+  },
+  {
+    id: 'dev-sign-03',
+    taskCode: 'DEV-SIGN-003',
+    title: '[SECURITY] Enforce Zero Critical Vulnerability Gate Evaluation',
+    requirementId: 'prd-sign-02',
+    requirementTitle: 'Automated OWASP Security Release Gate & AST Scanner Adapter',
+    status: 'review',
+    priority: 'P0',
+    assignee: {
+      name: 'David Vance',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80',
+      role: 'Security Engineer',
+    },
+    contextSummary: 'Calculate composite health score and flip release status to BLOCKED if OWASP critical issues remain.',
+    techStackTags: ['Security', 'OWASP', 'TypeScript'],
+    branch: 'fix/security-gate-calculator',
+  },
+  {
+    id: 'dev-sign-04',
+    taskCode: 'DEV-SIGN-004',
+    title: '[INGESTION] Support GitHub REST API Language Byte Distribution Extraction',
+    requirementId: 'prd-sign-03',
+    requirementTitle: 'Persistent Project Memory OS & Architecture Decision Log',
+    status: 'todo',
+    priority: 'P1',
+    assignee: {
+      name: 'Ashruth',
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&auto=format&fit=crop&q=80',
+      role: 'Project Maintainer',
+    },
+    contextSummary: 'Parse GitHub repo language byte ratios to display interactive distribution bars.',
+    techStackTags: ['GitHub API', 'TypeScript', 'REST'],
+    branch: 'feat/github-byte-parser',
+  },
+];
+
+export const initialSprintFeatures: SprintFeature[] = [
+  {
+    id: 'sf-01',
+    branchName: 'feat/validation-pin-coordinates',
+    prNumber: 42,
+    title: 'Validation Studio Coordinate Pinning & Discrepancy Tags',
+    prStatus: 'Open',
+    author: 'Maya Lin',
+    commitCount: 6,
+    progressPercent: 85,
+    linkedDevTasks: ['DEV-SIGN-002'],
+  },
+  {
+    id: 'sf-02',
+    branchName: 'fix/security-gate-calculator',
+    prNumber: 43,
+    title: 'OWASP Top 10 Release Gating & AST Threshold Engine',
+    prStatus: 'Open',
+    author: 'David Vance',
+    commitCount: 4,
+    progressPercent: 90,
+    linkedDevTasks: ['DEV-SIGN-003'],
+  },
+];
+
+export const initialSandboxBuilds: SandboxBuild[] = [
+  {
+    id: 'sb-01',
+    buildNumber: 'BUILD-1402',
+    commitHash: 'e46592c',
+    branch: 'main',
+    trigger: 'Automated CI Push',
+    timestamp: 'Today at 11:45 AM',
+    duration: '42s',
+    status: 'Success',
+    sandboxUrl: 'http://localhost:5173/',
+    sizeKb: 384,
+  },
+];
+
+export const initialQATestCases: QATestCase[] = [
+  {
+    id: 'qa-01',
+    testCode: 'QA-TC-001',
+    title: 'Workspace Switching Isolation & Data Partitioning',
+    requirementCode: 'PRD-SIGN-101',
+    acceptanceCriteriaIndex: 0,
+    type: 'Automated E2E',
+    status: 'Passed',
+    lastRun: 'Today at 11:50 AM',
+    durationMs: 340,
+    assignedQA: 'QA Automation Lead',
+  },
+  {
+    id: 'qa-02',
+    testCode: 'QA-TC-002',
+    title: 'Coordinate Pin Placement on 1440px and 375px Viewports',
+    requirementCode: 'PRD-SIGN-101',
+    acceptanceCriteriaIndex: 1,
+    type: 'Automated E2E',
+    status: 'Passed',
+    lastRun: 'Today at 11:51 AM',
+    durationMs: 512,
+    assignedQA: 'QA Automation Lead',
+  },
+  {
+    id: 'qa-03',
+    testCode: 'QA-TC-003',
+    title: 'Security Gate flips to BLOCKED when Critical vulnerability is injected',
+    requirementCode: 'PRD-SIGN-102',
+    acceptanceCriteriaIndex: 0,
+    type: 'Integration Unit',
+    status: 'Passed',
+    lastRun: 'Today at 11:52 AM',
+    durationMs: 180,
+    assignedQA: 'Staff QA Engineer',
+  },
+  {
+    id: 'qa-04',
+    testCode: 'QA-TC-004',
+    title: 'Offline LocalStorage Cache persists across browser refreshes',
+    requirementCode: 'PRD-SIGN-103',
+    acceptanceCriteriaIndex: 0,
+    type: 'Automated E2E',
+    status: 'Passed',
+    lastRun: 'Today at 11:53 AM',
+    durationMs: 240,
+    assignedQA: 'Staff QA Engineer',
+  },
+];
+
+export const initialBugItems: BugItem[] = [
+  {
+    id: 'bug-01',
+    bugCode: 'BUG-SIGN-01',
+    title: 'Figma frame preview aspect ratio scales slightly on mobile viewports',
+    severity: 'Medium P2',
+    status: 'Triaged',
+    originVersion: 'v1.4.0',
+    relatedFeature: 'Validation Studio',
+    isFigmaMismatch: true,
+    reporter: 'Maya Lin',
+    assignee: 'Alex Thorne',
+    detectedAt: 'Yesterday',
+  },
+];
+
+export const initialReadinessChecks: ReleaseReadinessCheck[] = [
+  { id: 'rc-01', category: 'Product', criterion: 'All P0 PRD Acceptance Criteria Satisfied', isMet: true, scoreWeight: 25, details: 'Verified across PRD-SIGN-101 & 102.' },
+  { id: 'rc-02', category: 'Security', criterion: 'Zero Unmitigated Critical OWASP Vulnerabilities', isMet: true, scoreWeight: 30, details: 'Security Gate evaluated with PASS status.' },
+  { id: 'rc-03', category: 'Design', criterion: 'Design Validation Studio Signoff Completed', isMet: true, scoreWeight: 20, details: 'Zero blocking visual mismatches remaining.' },
+  { id: 'rc-04', category: 'QA', criterion: '100% Automated QA Test Suite Passes in CI', isMet: true, scoreWeight: 15, details: 'All 4 automated suites green.' },
+  { id: 'rc-05', category: 'DevOps', criterion: 'Database Migration Scripts Verified on Staging', isMet: true, scoreWeight: 10, details: 'Firestore security rules active.' },
+];
+
+export const initialReleases: ReleaseItem[] = [
+  {
+    id: 'rel-01',
+    version: 'v1.4.0',
+    releaseName: 'Signals Lab 1.4: Design Validation Studio & Security Gating',
+    deployedAt: '2026-08-29',
+    status: 'Production Live',
+    preReleaseSentiment: 78,
+    postReleaseSentiment: 92,
+    sentimentDelta: 14.0,
+    resolvedClustersCount: 2,
+    notes: ['Interactive Figma Spec vs Live Sandbox', 'Pluggable Strix & VulnClaw Security Adapters', 'Instant GitHub Repo Ingestion Engine'],
+  },
+  {
+    id: 'rel-02',
+    version: 'v1.3.0',
+    releaseName: 'Signals Lab 1.3: Multi-Workspace Isolation & Local-First Engine',
+    deployedAt: '2026-08-15',
+    status: 'Production Live',
+    preReleaseSentiment: 72,
+    postReleaseSentiment: 84,
+    sentimentDelta: 12.0,
+    resolvedClustersCount: 3,
+    notes: ['HTML5 LocalStorage Caching with 0ms Latency', 'Command Palette (⌘K) Universal Search'],
+  },
+];
+
+export const initialIncidents: IncidentItem[] = [];
+export const initialMaintenance: MaintenanceTask[] = [
+  {
+    id: 'maint-01',
+    title: 'Upgrade Vite and Tailwind CSS build dependencies',
+    category: 'Security',
+    status: 'Scheduled',
+    nextRun: 'Next Sprint',
+    estimatedDuration: '30m',
+    responsibleEngineer: 'DevOps Lead',
+  },
+];
+
+export const initialContextBlocks: ContextBlock[] = [
+  {
+    id: 'ctx-01',
+    category: 'Architecture',
+    title: 'Why We Chose a Local-First State Machine for Signals Lab',
+    author: 'Alex Thorne (Principal Architect)',
+    lastUpdated: 'Today',
+    content: 'Developers require instantaneous response times during high-frequency workflows like moving tasks or dropping design pins. Writing state to localStorage synchronously eliminates network spinners and makes the platform fully offline-capable.',
+    tags: ['Architecture', 'Performance', 'Local-First'],
+  },
+  {
+    id: 'ctx-02',
+    category: 'Security & Token Policy',
+    title: 'OWASP Release Gate Blocker Policy',
+    author: 'David Vance (Security Engineer)',
+    lastUpdated: 'Yesterday',
+    content: 'Our release policy requires zero unmitigated Critical or High severity findings. If a vulnerability is accepted with signed executive justification, an expiration date must be recorded in the audit log.',
+    tags: ['Security', 'OWASP', 'Compliance'],
+  },
+];
+
+export const initialSecondBrainNotes: SecondBrainNote[] = [
+  {
+    id: 'note-01',
+    title: 'Key Learnings: Figma REST API vs Static Frame Specs',
+    rawContent: 'Rendering live iframe specs alongside interactive React sandboxes provides a clearer diffing experience than static PNG screenshots.',
+    updatedAt: '2 days ago',
+    isRefined: true,
+    tags: ['Figma', 'Validation Studio'],
+    refinedContent: {
+      summary: 'Side-by-side interactive comparison eliminates design debt.',
+      keyPoints: ['Use iframe live previews', 'Attach coordinate pins', 'Record FSM state changes'],
+      technicalTakeaways: ['HTML5 Canvas overlay provides sub-pixel accuracy'],
+      actionItems: ['Connect direct Figma OAuth token sync'],
+    },
+  },
+  {
+    id: 'note-02',
+    title: 'AST Tree-Sitter Traversal Patterns for Vulnerability Detection',
+    rawContent: 'Static AST scanning detects unsafe SQL concatenation and unverified eval calls before code ever leaves developer workstations.',
+    updatedAt: '4 days ago',
+    isRefined: true,
+    tags: ['Security', 'AST', 'Tree-Sitter'],
+    refinedContent: {
+      summary: 'AST patterns detect injection flaws prior to build completion.',
+      keyPoints: ['Traverse call expressions', 'Inspect string template interpolation'],
+      technicalTakeaways: ['Sub-100ms parse time on full repos'],
+      actionItems: ['Integrate into pre-commit git hooks'],
+    },
+  },
+];
+
+export const initialFileVault: FileVaultItem[] = [
+  {
+    id: 'file-01',
+    fileName: 'Signals_Lab_System_Architecture.pdf',
+    sizeBytes: 2450000,
+    fileType: 'Architecture Diagram',
+    uploadedBy: 'Ashruth',
+    uploadedAt: 'Today',
+    associatedFeature: 'Signals Lab Core',
+    downloadUrl: '#',
+  },
+  {
+    id: 'file-02',
+    fileName: 'Figma_Tokens_Export_v1.4.json',
+    sizeBytes: 142000,
+    fileType: 'Brand Tokens',
+    uploadedBy: 'Maya Lin',
+    uploadedAt: 'Yesterday',
+    associatedFeature: 'Design Tokens',
+    downloadUrl: '#',
+  },
+];
+
+export const initialDecisions: ProjectDecision[] = [
+  {
+    id: 'dec-01',
+    decisionCode: 'ADR-001',
+    title: 'Adopt React 18 and Tailwind CSS for Zero-Lag Design Systems',
+    category: 'Architecture',
+    context: 'We needed a highly responsive, modern frontend architecture with atomic styling to support dark mode glassmorphism and real-time state visualization.',
+    decisionMade: 'Standardized on React 18 with functional components, Tailwind CSS utility tokens, and Lucide vector icons.',
+    consequences: 'Sub-second compile times with Vite, zero stylesheet bloat, and consistent UI component primitives across all views.',
+    stakeholders: ['Alex Thorne', 'Maya Lin', 'Ashruth'],
+    date: '2026-08-01',
+  },
+  {
+    id: 'dec-02',
+    decisionCode: 'ADR-002',
+    title: 'Dual Persistence Strategy (LocalStorage + Cloud Firestore)',
+    category: 'Architecture',
+    context: 'Balancing offline developer speed with team real-time collaboration.',
+    decisionMade: 'Mutations update React memory and localStorage synchronously, while firestoreService listens to real-time snapshot events asynchronously.',
+    consequences: 'Zero latency for local interactions; automatic conflict-free real-time sync when connected to the internet.',
+    stakeholders: ['Alex Thorne', 'David Vance'],
+    date: '2026-08-05',
+  },
+];
+
+export const initialSecurityAssessments: SecurityAssessment[] = [
+  {
+    id: 'sec-assess-01',
+    assessmentCode: 'SEC-ASSESS-01',
+    name: 'Signals Lab Core Release Candidate Scan',
+    targetType: 'repository',
+    target: 'https://github.com/Ashruth14/Signal_lab',
+    mode: 'standard',
+    status: 'completed',
+    scope: {
+      assessmentId: 'sec-assess-01',
+      authorized: true,
+      allowedTargets: ['https://github.com/Ashruth14/Signal_lab'],
+      excludedTargets: [],
+      confirmedBy: 'Ashruth',
+      confirmedAt: '2026-08-29',
+    },
+    startedAt: 'Today at 10:30 AM',
+    completedAt: 'Today at 10:31 AM',
+    initiatedBy: 'David Vance (SecOps)',
+    findingsCount: 1,
+    criticalCount: 0,
+    highCount: 0,
+    mediumCount: 1,
+    lowCount: 0,
+    validatedCount: 1,
+    securityScore: 95,
+    provider: 'strix',
+  },
+];
+
+export const initialSecurityFindings: SecurityFinding[] = [
+  {
+    id: 'sec-find-01',
+    findingCode: 'SEC-SIGN-01',
+    assessmentId: 'sec-assess-01',
+    title: 'Missing Content-Security-Policy (CSP) Directives on Static Assets',
+    description: 'Ensure CSP meta tag restricts script-src and object-src to prevent potential cross-site injection.',
+    severity: 'medium',
+    confidence: 'validated',
+    category: 'OWASP A05:2021 Security Misconfiguration',
+    cwe: 'CWE-1021',
+    owasp: 'A05:2021',
+    cvss: 4.8,
+    affectedTarget: 'index.html',
+    affectedFile: 'index.html',
+    affectedLine: 12,
+    evidenceIds: ['sec-ev-01'],
+    impact: 'Low risk of unverified script injection if third-party CDN assets are manipulated.',
+    remediation: 'Add strict default-src self and script-src self policies to web headers.',
+    status: 'open',
+    discoveredAt: 'Today at 10:30 AM',
+  },
+];
+
+export const initialSecurityEvidence: SecurityEvidence[] = [
+  {
+    id: 'sec-ev-01',
+    assessmentId: 'sec-assess-01',
+    findingId: 'sec-find-01',
+    type: 'http-response',
+    title: 'HTTP Header Security Response Audit',
+    source: 'VulnClaw HTTP Prober',
+    content: 'HTTP/1.1 200 OK\nX-Frame-Options: SAMEORIGIN\nX-Content-Type-Options: nosniff\nContent-Security-Policy: [WARNING: MISSING STRICT SCRIPT-SRC DIRECTIVE]',
+    capturedAt: 'Today at 10:30 AM',
+  },
+];
+
+export const initialSecurityScanEvents: SecurityScanEvent[] = [
+  {
+    id: 'scan-01',
+    assessmentId: 'sec-assess-01',
+    timestamp: 'Today at 10:30 AM',
+    stage: 'analysis',
+    source: 'Strix AST Scanner',
+    message: 'Full AST Static Analysis & Security Gate Passed with 95/100 composite safety score.',
+    status: 'success',
+  },
+];
+
 export const initialLLMModels: LLMModelTarget[] = [
   {
     id: 'claude-3-7-sonnet',
